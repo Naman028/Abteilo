@@ -1,0 +1,84 @@
+# Abteilo: PostgreSQL + one-shot migration + API + retention worker.
+# Secrets come from .env (copy .env.docker.example). Ollama runs on the host by
+# default; uncomment the ollama service to run it in Docker instead.
+name: abteilo
+
+services:
+  db:
+    # PostgreSQL 17 with the pgvector extension (same major version, so existing volumes stay compatible).
+    image: pgvector/pgvector:0.8.7-pg17-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: abteilo
+      POSTGRES_USER: abteilo_owner
+      POSTGRES_PASSWORD: ${ABTEILO_OWNER_PASSWORD:?set ABTEILO_OWNER_PASSWORD}
+      ABTEILO_APP_PASSWORD: ${ABTEILO_APP_PASSWORD:?set ABTEILO_APP_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./deploy/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U abteilo_owner -d abteilo"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    deploy:
+      resources:
+        limits: { memory: 1g }
+
+  # One image for migrate, api and worker: built once by the migrate service.
+  migrate:
+    build: .
+    image: abteilo-app:local
+    command: ["alembic", "upgrade", "head"]
+    healthcheck: { disable: true }
+    environment:
+      ABTEILO_DATABASE_URL: postgresql+psycopg://abteilo_app:${ABTEILO_APP_PASSWORD}@db:5432/abteilo
+      ABTEILO_MIGRATION_DATABASE_URL: postgresql+psycopg://abteilo_owner:${ABTEILO_OWNER_PASSWORD}@db:5432/abteilo
+    depends_on:
+      db: { condition: service_healthy }
+    restart: "no"
+
+  api:
+    image: abteilo-app:local
+    pull_policy: never
+    restart: unless-stopped
+    ports: ["127.0.0.1:${ABTEILO_HTTP_PORT:-8000}:8000"]
+    environment: &app-env
+      ABTEILO_ENVIRONMENT: production
+      ABTEILO_DATABASE_URL: postgresql+psycopg://abteilo_app:${ABTEILO_APP_PASSWORD}@db:5432/abteilo
+      ABTEILO_COOKIE_SECURE: ${ABTEILO_COOKIE_SECURE:-true}
+      ABTEILO_OLLAMA_URL: ${ABTEILO_OLLAMA_URL:-http://host.docker.internal:11434}
+      ABTEILO_EMBEDDING_MODEL: ${ABTEILO_EMBEDDING_MODEL:-bge-m3}
+      ABTEILO_OPENAI_COMPATIBLE_URL: ${ABTEILO_OPENAI_COMPATIBLE_URL:-}
+      ABTEILO_OPENAI_COMPATIBLE_API_KEY: ${ABTEILO_OPENAI_COMPATIBLE_API_KEY:-}
+      ABTEILO_ANTHROPIC_API_KEY: ${ABTEILO_ANTHROPIC_API_KEY:-}
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    deploy:
+      resources:
+        limits: { memory: 1g }
+
+  worker:
+    image: abteilo-app:local
+    pull_policy: never
+    command: ["python", "-m", "abteilo.worker"]
+    # The worker serves no HTTP; the image's /healthz check applies to the api only.
+    healthcheck: { disable: true }
+    restart: unless-stopped
+    environment: *app-env
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    deploy:
+      resources:
+        limits: { memory: 256m }
+
+  # ollama:
+  #   image: ollama/ollama:0.31.1
+  #   volumes: [ollama:/root/.ollama]
+  #   restart: unless-stopped
+
+volumes:
+  pgdata:
+  # ollama:

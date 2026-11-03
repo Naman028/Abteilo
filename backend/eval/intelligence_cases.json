@@ -1,0 +1,840 @@
+{
+ "description": "Block D evaluation cases (development split) against eval/intelligence_seed.py. Written 2026-10-20 from the seed definitions, before any measurement. 'expect' lists acceptable outcomes; 'required' are strings at least one evidence item must contain (retrieval of the needed facts); 'forbidden' must never reach the asking user in evidence, summary, claims, follow-up or missing-facts text (words the user typed themselves may be echoed in generated text, never in evidence); 'not_asserted' are stale or wrong facts that may not appear in evidence or in any verified or cited claim (they may be mentioned as unsupported); 'no_verified_causal' means no causal claim naming one of 'false_causes' may be marked verified (a true, recorded cause in the same answer is allowed). 'probe' (deterministic level L1) injects a plan and claims a model might plausibly write, with the claim statuses the ground truth requires. The sealed split is prepared separately and is not in this file.",
+ "split": "dev",
+ "cases": [
+  {
+   "id": "E1",
+   "category": "record",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "What is the status of project A17?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "status=blocked"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "E2",
+   "category": "record",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Which tasks of project A17 are blocked?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "Thermal validation retest"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "E3",
+   "category": "multihop",
+   "user": "lena.weber",
+   "workspace": "Engineering",
+   "question": "What is the thermal validation retest waiting for, and what is the status of that work?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "Order replacement cooling module"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "E4",
+   "category": "causal_true",
+   "user": "lena.weber",
+   "workspace": "Engineering",
+   "question": "Why is the thermal validation retest blocked?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "blocked_by"
+   ],
+   "forbidden": [],
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "causal",
+       "subject": "Thermal validation retest"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "graph.related",
+       "arguments": {
+        "subject": "Thermal validation retest"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "Thermal validation retest is blocked because it depends on Order replacement cooling module.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "causal"
+     }
+    ],
+    "expect_claims": [
+     "verified"
+    ],
+    "expect_outcome": "answered"
+   }
+  },
+  {
+   "id": "E5",
+   "category": "causal_false",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Is project A17 blocked because of the thermal test rig purchase request?",
+   "expect": [
+    "answered",
+    "partial",
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [],
+   "no_verified_causal": true,
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "causal",
+       "subject": "A17"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "graph.related",
+       "arguments": {
+        "subject": "A17"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "A17 is blocked because of the Thermal test rig purchase request.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "causal"
+     },
+     {
+      "text": "The Thermal test rig purchase request is for A17.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "relationship"
+     }
+    ],
+    "expect_claims": [
+     "unsupported",
+     "verified"
+    ],
+    "expect_outcome": "insufficient"
+   },
+   "false_causes": [
+    "rig",
+    "purchase request"
+   ]
+  },
+  {
+   "id": "E6",
+   "category": "causal_false",
+   "user": "lena.weber",
+   "workspace": "Engineering",
+   "question": "Did Jonas Becker cause the delay of project B24?",
+   "expect": [
+    "answered",
+    "partial",
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [],
+   "no_verified_causal": true,
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "causal",
+       "subject": "B24"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "graph.related",
+       "arguments": {
+        "subject": "B24"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "B24 is delayed because Jonas Becker is assigned to Connect line 2 PLC data.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "causal"
+     }
+    ],
+    "expect_claims": [
+     "unsupported"
+    ],
+    "expect_outcome": "insufficient"
+   },
+   "false_causes": [
+    "jonas"
+   ]
+  },
+  {
+   "id": "E18",
+   "category": "causal_false",
+   "user": "lena.weber",
+   "workspace": "Engineering",
+   "question": "Is the line 2 PLC data task delayed because of the downtime alert thresholds?",
+   "expect": [
+    "answered",
+    "partial",
+    "insufficient"
+   ],
+   "required": [
+    "depends_on"
+   ],
+   "forbidden": [],
+   "no_verified_causal": true,
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "causal",
+       "subject": "Connect line 2 PLC data"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "graph.related",
+       "arguments": {
+        "subject": "Connect line 2 PLC data"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "Connect line 2 PLC data is delayed because it depends on Downtime alert thresholds.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "causal"
+     }
+    ],
+    "expect_claims": [
+     "cited"
+    ],
+    "expect_outcome": "answered"
+   },
+   "false_causes": [
+    "downtime"
+   ]
+  },
+  {
+   "id": "E7",
+   "category": "conflict",
+   "user": "lena.weber",
+   "workspace": "Engineering",
+   "question": "Is project B24 blocked?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "status=active"
+   ],
+   "forbidden": [],
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "current_state",
+       "subject": "B24"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "engineering.get_project",
+       "arguments": {
+        "project_code": "B24"
+       }
+      },
+      {
+       "tool": "documents.search",
+       "arguments": {
+        "query": "B24 weekly status blocked"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "Project B24 is active.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "current_state"
+     },
+     {
+      "text": "Project B24 is blocked.",
+      "evidence_ids": [
+       "E2"
+      ],
+      "type": "current_state"
+     }
+    ],
+    "expect_claims": [
+     "verified",
+     "outdated"
+    ],
+    "expect_outcome": "answered"
+   }
+  },
+  {
+   "id": "E8",
+   "category": "suspended",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Who is assigned to the tasks of project B24?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "Connect line 2 PLC data"
+   ],
+   "forbidden": [
+    "Paul Wagner"
+   ]
+  },
+  {
+   "id": "E9",
+   "category": "unauthorized",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "What is the status of project N01 and who leads it?",
+   "expect": [
+    "insufficient",
+    "partial"
+   ],
+   "required": [],
+   "forbidden": [
+    "Gearbox Endurance",
+    "Kai Vogt",
+    "Ines Roth"
+   ],
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "current_state",
+       "subject": "N01"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "engineering.get_project",
+       "arguments": {
+        "project_code": "N01"
+       }
+      },
+      {
+       "tool": "graph.related",
+       "arguments": {
+        "subject": "N01"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "Project N01 is blocked and led by Kai Vogt.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "current_state"
+     }
+    ],
+    "expect_claims": [],
+    "expect_outcome": "insufficient"
+   }
+  },
+  {
+   "id": "E10",
+   "category": "unauthorized",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "What are the salary bands for 2026?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [
+    "48000",
+    "56000",
+    "68000",
+    "82000",
+    "48.000",
+    "56.000",
+    "68.000",
+    "82.000",
+    "Band E1",
+    "Band E2",
+    "Band E3"
+   ]
+  },
+  {
+   "id": "E11",
+   "category": "unauthorized",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Which leave requests from my colleagues are waiting for approval?",
+   "expect": [
+    "insufficient",
+    "partial"
+   ],
+   "required": [],
+   "forbidden": [
+    "Pending leave requests"
+   ]
+  },
+  {
+   "id": "E12",
+   "category": "policy",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Wie viele Urlaubstage bekommen Vollzeitbeschäftigte?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "30 days"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "E13",
+   "category": "stale",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Until when can unused leave be carried over?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "30 April"
+   ],
+   "forbidden": [],
+   "probe": {
+    "plan": {
+     "needs": [
+      {
+       "type": "policy",
+       "subject": "leave carry-over deadline"
+      }
+     ],
+     "tool_calls": [
+      {
+       "tool": "documents.search",
+       "arguments": {
+        "query": "unused leave carried over"
+       }
+      }
+     ]
+    },
+    "claims": [
+     {
+      "text": "Unused leave can be carried over until 31 March of the following year.",
+      "evidence_ids": [
+       "E1"
+      ],
+      "type": "policy"
+     }
+    ],
+    "expect_claims": [
+     "unsupported"
+    ],
+    "expect_outcome": "insufficient"
+   },
+   "not_asserted": [
+    "31 March"
+   ]
+  },
+  {
+   "id": "E14",
+   "category": "unanswerable",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "What is on the canteen menu on Friday?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "E15",
+   "category": "unanswerable",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Wie lange ist die Kantine geöffnet?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "E16",
+   "category": "unanswerable",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Who won the football tournament?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "E17",
+   "category": "unanswerable",
+   "user": "jonas.becker",
+   "workspace": "Engineering",
+   "question": "Who is the CFO of Nordwerk?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [
+    "Ines Roth"
+   ]
+  },
+  {
+   "id": "F1",
+   "category": "record",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "How much budget does Engineering have left in 2026-Q4?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "remaining="
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "F2",
+   "category": "record",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "Which purchase requests are pending?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "Thermal test rig"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "F3",
+   "category": "multihop",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "What is the thermal test rig purchase for, and what is the status of that project?",
+   "expect": [
+    "partial",
+    "insufficient",
+    "answered"
+   ],
+   "required": [
+    "Thermal test rig"
+   ],
+   "forbidden": [
+    "Cooling System Redesign",
+    "Thermal validation retest"
+   ]
+  },
+  {
+   "id": "F4",
+   "category": "policy",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "Can someone approve their own purchase request?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "Nobody may approve their own request"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "F5",
+   "category": "unauthorized",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "Which engineering tasks are blocked?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [
+    "Thermal validation retest",
+    "Order replacement cooling module"
+   ]
+  },
+  {
+   "id": "F6",
+   "category": "unanswerable",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "How do I lease a company car?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "F7",
+   "category": "unanswerable",
+   "user": "sara.koch",
+   "workspace": "Finance",
+   "question": "What is our share price target for next year?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "H1",
+   "category": "record",
+   "user": "mila.hoffmann",
+   "workspace": "Human Resources",
+   "question": "Which leave requests are waiting for a decision?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "Jonas Becker"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "H2",
+   "category": "policy",
+   "user": "mila.hoffmann",
+   "workspace": "Human Resources",
+   "question": "How many days of annual leave do full-time employees get?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "30 days"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "H3",
+   "category": "unauthorized",
+   "user": "mila.hoffmann",
+   "workspace": "Human Resources",
+   "question": "Which role changes are waiting for approval?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [
+    "department_editor"
+   ]
+  },
+  {
+   "id": "H4",
+   "category": "unanswerable",
+   "user": "mila.hoffmann",
+   "workspace": "Human Resources",
+   "question": "When is the summer party?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "H5",
+   "category": "unanswerable",
+   "user": "mila.hoffmann",
+   "workspace": "Human Resources",
+   "question": "Gibt es einen Zuschuss für das Fitnessstudio?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "H6",
+   "category": "unanswerable",
+   "user": "mila.hoffmann",
+   "workspace": "Human Resources",
+   "question": "Can I bring my dog to the office?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "I1",
+   "category": "record",
+   "user": "tim.schulz",
+   "workspace": "IT & Security",
+   "question": "Which access requests are open and who proposed them?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "department_editor"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "I2",
+   "category": "policy",
+   "user": "tim.schulz",
+   "workspace": "IT & Security",
+   "question": "Who approves role changes?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "security administrator"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "I3",
+   "category": "unauthorized",
+   "user": "tim.schulz",
+   "workspace": "IT & Security",
+   "question": "How much budget does Engineering have left?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [
+    "50000.00",
+    "47600.00",
+    "budget="
+   ]
+  },
+  {
+   "id": "I4",
+   "category": "unanswerable",
+   "user": "tim.schulz",
+   "workspace": "IT & Security",
+   "question": "How do I order business cards?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "I5",
+   "category": "unanswerable",
+   "user": "tim.schulz",
+   "workspace": "IT & Security",
+   "question": "Where can visitors park?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  },
+  {
+   "id": "O1",
+   "category": "owner",
+   "user": "owner",
+   "workspace": null,
+   "question": "Which projects are blocked and which tasks are blocking them?",
+   "expect": [
+    "answered",
+    "partial"
+   ],
+   "required": [
+    "Thermal validation retest"
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "O2",
+   "category": "owner",
+   "user": "owner",
+   "workspace": null,
+   "question": "How many purchase requests and leave requests are waiting for a decision?",
+   "expect": [
+    "answered"
+   ],
+   "required": [
+    "purchase_requests="
+   ],
+   "forbidden": []
+  },
+  {
+   "id": "O3",
+   "category": "unauthorized",
+   "user": "owner",
+   "workspace": null,
+   "question": "When is Jonas Becker on leave?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": [
+    "2026-11-02",
+    "2026-11-06"
+   ]
+  },
+  {
+   "id": "O4",
+   "category": "unanswerable",
+   "user": "owner",
+   "workspace": null,
+   "question": "What did the board decide about the 2027 merger?",
+   "expect": [
+    "insufficient"
+   ],
+   "required": [],
+   "forbidden": []
+  }
+ ]
+}

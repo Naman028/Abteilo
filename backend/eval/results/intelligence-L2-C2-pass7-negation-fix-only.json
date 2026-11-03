@@ -1,0 +1,3070 @@
+{
+ "level": "L2",
+ "config": "C2",
+ "runs": 3,
+ "stream": false,
+ "per_run": [
+  [
+   {
+    "id": "E1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "verified",
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Project A17 is blocked."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task Thermal validation retest for Project A17 is blocked."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task Update tolerance specification for Project A17 is done."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task Order replacement cooling module for Project A17 is in progress."
+     }
+    ],
+    "latency_ms": 8354,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E2",
+    "category": "record",
+    "outcome": "insufficient",
+    "outcome_ok": false,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "engineering.get_project",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3154,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E3",
+    "category": "multihop",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "verified"
+    ],
+    "tools": [
+     "graph.related",
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "subject_identity_not_established",
+      "text": "Thermal validation retest is blocked because an order for a replacement cooling module is needed."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task of ordering the replacement cooling module has been assigned to Lena Weber and is in progress."
+     }
+    ],
+    "latency_ms": 7208,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E4",
+    "category": "causal_true",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "A replacement cooling module and a new test rig are required before the retest can proceed."
+     }
+    ],
+    "latency_ms": 5010,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E5",
+    "category": "causal_false",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported",
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "relationship_from_document_mention",
+      "text": "Project A17's status is blocked"
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The thermal validation retest task is blocking the project"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "A replacement cooling module order is in progress"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "A purchase request for a new thermal test rig has been submitted and requested for A17 Cooling System Redesign"
+     }
+    ],
+    "latency_ms": 8029,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E6",
+    "category": "causal_false",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related",
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3133,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E18",
+    "category": "causal_false",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project",
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The PLC data task for line 2 depends on the downtime alert thresholds."
+     }
+    ],
+    "latency_ms": 5382,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E7",
+    "category": "conflict",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "relationship_from_document_mention",
+      "text": "Project B24 is blocked"
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The blockage is due to waiting for PLC access on line 2"
+     }
+    ],
+    "latency_ms": 5613,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E8",
+    "category": "suspended",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Jonas Becker is assigned to the task 'Connect line 2 PLC data' in project B24."
+     }
+    ],
+    "latency_ms": 4768,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E9",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2292,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E10",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2829,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E11",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3758,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E12",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Full-time employees receive 30 days of annual leave per calendar year."
+     }
+    ],
+    "latency_ms": 5421,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E13",
+    "category": "stale",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Unused leave can be carried over until 30 April of the following year."
+     }
+    ],
+    "latency_ms": 5048,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E14",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1668,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E15",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2131,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E16",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1570,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E17",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1596,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "finance.budget_summary"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Engineering's remaining budget is 50,000.00 EUR in 2026-Q4."
+     }
+    ],
+    "latency_ms": 5481,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F2",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "finance.list_purchase_requests"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The purchase request for the thermal test rig is pending."
+     }
+    ],
+    "latency_ms": 4154,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F3",
+    "category": "multihop",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3093,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F4",
+    "category": "policy",
+    "outcome": "insufficient",
+    "outcome_ok": false,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "unsupported",
+      "reason": "negated_statement_not_verifiable",
+      "text": "Nobody may approve their own request."
+     }
+    ],
+    "latency_ms": 4964,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F5",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2355,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F6",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 4673,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F7",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2284,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "hr.pending_leave"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There is one pending leave request for Jonas Becker from November 2 to November 6, 2026."
+     }
+    ],
+    "latency_ms": 4687,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H2",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Full-time employees receive 30 days of annual leave per calendar year."
+     }
+    ],
+    "latency_ms": 5147,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2067,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2011,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H5",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2127,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H6",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "unsupported",
+      "reason": "negated_statement_not_verifiable",
+      "text": "The evidence provided does not discuss pet policies in the workplace."
+     }
+    ],
+    "latency_ms": 4791,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "verified"
+    ],
+    "tools": [
+     "it.list_access_requests"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "The access request for Jonas Becker to have the department_editor role in the Engineering department is open."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Tim Schulz proposed the access request for Jonas Becker."
+     }
+    ],
+    "latency_ms": 5524,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I2",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Role changes are proposed by IT"
+     },
+     {
+      "status": "unsupported",
+      "reason": "negated_status_not_verifiable",
+      "text": "Role changes are approved by a security administrator who is neither the proposer nor the person receiving the role"
+     }
+    ],
+    "latency_ms": 6344,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2116,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I4",
+    "category": "unanswerable",
+    "outcome": "answered",
+    "outcome_ok": false,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "cited",
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Purchase requests are submitted in Abteilo"
+     },
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "A purchase request needs a justification and the budget period"
+     },
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "The finance department approves or rejects requests"
+     }
+    ],
+    "latency_ms": 6789,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I5",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2087,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O1",
+    "category": "owner",
+    "outcome": "partial",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "unsupported"
+    ],
+    "tools": [
+     "company.overview",
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Project A17, Cooling System Redesign, is blocked."
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The blockage for Project A17 is due to a thermal validation retest."
+     }
+    ],
+    "latency_ms": 7163,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O2",
+    "category": "owner",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "company.overview"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There are 1 purchase requests waiting for approval."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There are 1 leave requests waiting for approval."
+     }
+    ],
+    "latency_ms": 5787,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2908,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2902,
+    "first_visible_ms": null,
+    "error": null
+   }
+  ],
+  [
+   {
+    "id": "E1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Project A17's overall status is blocked."
+     }
+    ],
+    "latency_ms": 4101,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E2",
+    "category": "record",
+    "outcome": "insufficient",
+    "outcome_ok": false,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "engineering.get_project",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3044,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E3",
+    "category": "multihop",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "graph.related",
+     "engineering.get_project",
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "causal_link_stated_in_source",
+      "text": "Thermal validation retest is blocked due to the need for a replacement cooling module."
+     },
+     {
+      "status": "unsupported",
+      "reason": "negated_status_not_verifiable",
+      "text": "The order of the replacement cooling module has started but is not yet completed."
+     }
+    ],
+    "latency_ms": 8817,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E4",
+    "category": "causal_true",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "A replacement cooling module and a new test rig are required before the retest can proceed."
+     }
+    ],
+    "latency_ms": 4991,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E5",
+    "category": "causal_false",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "verified",
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "relationship_from_document_mention",
+      "text": "Project A17's progress is currently blocked"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The thermal validation retest task is blocked"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Ordering a replacement cooling module is in progress"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "A purchase request for a new thermal test rig has been submitted"
+     }
+    ],
+    "latency_ms": 7556,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E6",
+    "category": "causal_false",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related",
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3184,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E18",
+    "category": "causal_false",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related",
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3692,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E7",
+    "category": "conflict",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "relationship_from_document_mention",
+      "text": "Project B24 is blocked"
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The blockage is due to waiting for PLC access on line 2"
+     }
+    ],
+    "latency_ms": 5657,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E8",
+    "category": "suspended",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Jonas Becker is assigned to the task 'Connect line 2 PLC data' in project B24."
+     }
+    ],
+    "latency_ms": 4767,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E9",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2288,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E10",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2806,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E11",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3669,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E12",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Full-time employees receive 30 days of annual leave per calendar year."
+     }
+    ],
+    "latency_ms": 4953,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E13",
+    "category": "stale",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Unused leave can be carried over until 30 April of the following year."
+     }
+    ],
+    "latency_ms": 5375,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E14",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1622,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E15",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2115,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E16",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1539,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E17",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1617,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "finance.budget_summary"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Engineering's remaining budget is 50000.00 EUR in 2026-Q4."
+     }
+    ],
+    "latency_ms": 5300,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F2",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "finance.list_purchase_requests"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The purchase request for a thermal test rig is pending."
+     }
+    ],
+    "latency_ms": 4146,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F3",
+    "category": "multihop",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3100,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F4",
+    "category": "policy",
+    "outcome": "insufficient",
+    "outcome_ok": false,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "unsupported",
+      "reason": "negated_statement_not_verifiable",
+      "text": "Nobody may approve their own request."
+     }
+    ],
+    "latency_ms": 5040,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F5",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2348,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F6",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search",
+     "finance.budget_summary"
+    ],
+    "claim_detail": [],
+    "latency_ms": 4566,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F7",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2011,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "hr.pending_leave"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There is a pending leave request for Jonas Becker from November 2 to November 6, 2026, for 5.0 days."
+     }
+    ],
+    "latency_ms": 4519,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H2",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Full-time employees receive 30 days of annual leave per calendar year."
+     }
+    ],
+    "latency_ms": 5071,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2008,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2015,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H5",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Purchase requests are submitted in Abteilo with a justification and the budget period."
+     },
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "The finance department approves or rejects requests based on remaining budget coverage."
+     }
+    ],
+    "latency_ms": 5962,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H6",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3794,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "it.list_access_requests"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "Jonas Becker has an open access request"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The status of Jonas Becker's access request is proposed"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Tim Schulz proposed Jonas Becker's access request"
+     }
+    ],
+    "latency_ms": 6177,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I2",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Role changes are proposed by IT"
+     },
+     {
+      "status": "unsupported",
+      "reason": "negated_status_not_verifiable",
+      "text": "Role changes are approved by a security administrator who is neither the proposer nor the person receiving the role"
+     }
+    ],
+    "latency_ms": 6215,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2036,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Purchase requests are submitted in Abteilo"
+     },
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "Requests require a justification and the budget period"
+     }
+    ],
+    "latency_ms": 6164,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I5",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2116,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O1",
+    "category": "owner",
+    "outcome": "partial",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "unsupported"
+    ],
+    "tools": [
+     "company.overview",
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Project A17, Cooling System Redesign, is blocked."
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The blocking issue for Project A17 is a thermal validation retest task."
+     }
+    ],
+    "latency_ms": 6944,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O2",
+    "category": "owner",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "company.overview"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There are 1 purchase requests waiting for approval."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There are 1 leave requests waiting for approval."
+     }
+    ],
+    "latency_ms": 5789,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3030,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2845,
+    "first_visible_ms": null,
+    "error": null
+   }
+  ],
+  [
+   {
+    "id": "E1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "verified",
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Project A17's status is blocked."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task 'Thermal validation retest' for Project A17 is blocked."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task 'Update tolerance specification' for Project A17 is done."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The task 'Order replacement cooling module' for Project A17 is in progress."
+     }
+    ],
+    "latency_ms": 7110,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E2",
+    "category": "record",
+    "outcome": "insufficient",
+    "outcome_ok": false,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "engineering.get_project",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3092,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E3",
+    "category": "multihop",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "cited"
+    ],
+    "tools": [
+     "graph.related",
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "subject_identity_not_established",
+      "text": "Thermal validation retest is blocked because it is waiting for an order of a replacement cooling module."
+     },
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "The task has been assigned to Jonas Becker."
+     }
+    ],
+    "latency_ms": 6850,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E4",
+    "category": "causal_true",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "A replacement cooling module and a new test rig are required before the retest can proceed."
+     }
+    ],
+    "latency_ms": 5054,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E5",
+    "category": "causal_false",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported",
+     "cited",
+     "verified"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "relationship_from_document_mention",
+      "text": "Project A17's status is blocked."
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The thermal validation retest task is blocking the project."
+     },
+     {
+      "status": "cited",
+      "reason": "subject_identity_not_established",
+      "text": "A replacement cooling module order is in progress for the thermal validation retest."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The purchase request for a new thermal test rig has been submitted and requested for project A17."
+     }
+    ],
+    "latency_ms": 7989,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E6",
+    "category": "causal_false",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related",
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3124,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E18",
+    "category": "causal_false",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project",
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "The PLC data task for line 2 depends on the downtime alert thresholds."
+     }
+    ],
+    "latency_ms": 5395,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E7",
+    "category": "conflict",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "relationship_from_document_mention",
+      "text": "Project B24 is blocked"
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The blockage is due to waiting for PLC access on line 2"
+     }
+    ],
+    "latency_ms": 5667,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E8",
+    "category": "suspended",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Jonas Becker is assigned to the task 'Connect line 2 PLC data' in project B24."
+     }
+    ],
+    "latency_ms": 4768,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E9",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "engineering.get_project"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2331,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E10",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2824,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E11",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3779,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E12",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Full-time employees receive 30 days of annual leave per calendar year."
+     }
+    ],
+    "latency_ms": 4869,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E13",
+    "category": "stale",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Unused leave can be carried over until 30 April of the following year."
+     }
+    ],
+    "latency_ms": 5369,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E14",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1640,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E15",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2104,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E16",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1626,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "E17",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 1627,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "finance.budget_summary"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Engineering's remaining budget for 2026-Q4 is 50000.00 EUR."
+     }
+    ],
+    "latency_ms": 5306,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F2",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "finance.list_purchase_requests"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There is a pending purchase request for the Thermal test rig."
+     }
+    ],
+    "latency_ms": 4262,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F3",
+    "category": "multihop",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search",
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 4155,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F4",
+    "category": "policy",
+    "outcome": "insufficient",
+    "outcome_ok": false,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "unsupported",
+      "reason": "negated_statement_not_verifiable",
+      "text": "Nobody may approve their own request."
+     }
+    ],
+    "latency_ms": 4982,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F5",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2415,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F6",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 4012,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "F7",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2084,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified"
+    ],
+    "tools": [
+     "hr.pending_leave"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There is one pending leave request for Jonas Becker from November 2 to November 6, 2026."
+     }
+    ],
+    "latency_ms": 4404,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H2",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Full-time employees receive 30 days of annual leave per calendar year."
+     }
+    ],
+    "latency_ms": 5115,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "graph.related"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2020,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2081,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H5",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "unsupported",
+      "reason": "negated_statement_not_verifiable",
+      "text": "Keine spezifischen Antr\u00e4ge oder Zusch\u00fcsse f\u00fcr das Fitnessstudio sind in den aktuellen Dokumenten aufgef\u00fchrt."
+     }
+    ],
+    "latency_ms": 5144,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "H6",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 3806,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I1",
+    "category": "record",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "unsupported",
+     "verified"
+    ],
+    "tools": [
+     "it.list_access_requests"
+    ],
+    "claim_detail": [
+     {
+      "status": "unsupported",
+      "reason": "wording_not_found_in_evidence",
+      "text": "The access request is open"
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Tim Schulz proposed the access request"
+     }
+    ],
+    "latency_ms": 5146,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I2",
+    "category": "policy",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "unsupported"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Role changes are proposed by IT"
+     },
+     {
+      "status": "unsupported",
+      "reason": "negated_status_not_verifiable",
+      "text": "Role changes are approved by a security administrator who is neither the proposer nor the person receiving the role"
+     }
+    ],
+    "latency_ms": 6356,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2100,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "cited",
+     "cited"
+    ],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [
+     {
+      "status": "cited",
+      "reason": "document_not_authoritative_for_current_state",
+      "text": "Purchase requests are submitted in Abteilo"
+     },
+     {
+      "status": "cited",
+      "reason": "narrative_not_machine_checked",
+      "text": "Requests require a justification and the budget period"
+     }
+    ],
+    "latency_ms": 6197,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "I5",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2846,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O1",
+    "category": "owner",
+    "outcome": "partial",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "unsupported"
+    ],
+    "tools": [
+     "company.overview",
+     "graph.related"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "Project A17, Cooling System Redesign, is blocked."
+     },
+     {
+      "status": "unsupported",
+      "reason": "causal_link_not_in_evidence",
+      "text": "The blocking issue for Project A17 is a thermal validation retest task."
+     }
+    ],
+    "latency_ms": 7021,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O2",
+    "category": "owner",
+    "outcome": "answered",
+    "outcome_ok": true,
+    "required_found": 1,
+    "required_n": 1,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [
+     "verified",
+     "verified"
+    ],
+    "tools": [
+     "company.overview"
+    ],
+    "claim_detail": [
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There is 1 purchase request waiting for a decision."
+     },
+     {
+      "status": "verified",
+      "reason": null,
+      "text": "There is 1 leave request waiting for a decision."
+     }
+    ],
+    "latency_ms": 6103,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O3",
+    "category": "unauthorized",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2985,
+    "first_visible_ms": null,
+    "error": null
+   },
+   {
+    "id": "O4",
+    "category": "unanswerable",
+    "outcome": "insufficient",
+    "outcome_ok": true,
+    "required_found": 0,
+    "required_n": 0,
+    "leaked": [],
+    "stale_asserted": [],
+    "false_causal_verified": false,
+    "claims": [],
+    "tools": [
+     "documents.search"
+    ],
+    "claim_detail": [],
+    "latency_ms": 2905,
+    "first_visible_ms": null,
+    "error": null
+   }
+  ]
+ ],
+ "summary": {
+  "outcome_accuracy": {
+   "mean": 0.942,
+   "worst": 0.925
+  },
+  "unanswerable_abstained": {
+   "mean": 0.972,
+   "worst": 0.917
+  },
+  "multihop_required_recall": {
+   "mean": 0.5,
+   "worst": 0.5
+  },
+  "required_recall_all": {
+   "mean": 0.93,
+   "worst": 0.895
+  },
+  "single_source_and_policy_accuracy": {
+   "mean": 0.8,
+   "worst": 0.8
+  },
+  "conflict_ok": {
+   "mean": 1.0,
+   "worst": 1.0
+  },
+  "unauthorised_disclosures": 0,
+  "leaks": [],
+  "false_causal_verified": 0,
+  "stale_asserted": 0,
+  "errors": 0,
+  "latency_ms": {
+   "p50": 4154,
+   "p95": 7163
+  },
+  "outcome_ok_by_category": {
+   "causal_false": "9/9",
+   "causal_true": "3/3",
+   "conflict": "3/3",
+   "multihop": "6/6",
+   "owner": "6/6",
+   "policy": "9/12",
+   "record": "15/18",
+   "stale": "3/3",
+   "suspended": "3/3",
+   "unanswerable": "35/36",
+   "unauthorized": "21/21"
+  }
+ },
+ "run_at": "2026-10-23T10:08:56+00:00"
+}

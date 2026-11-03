@@ -1,0 +1,16 @@
+# Secrets and local state never enter the build context or images.
+.env
+.env.*
+**/.env
+**/.env.*
+deploy/.env.docker
+**/.venv
+**/node_modules
+frontend/dist
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/*.tsbuildinfo
+.git
+docs
+backend/tests

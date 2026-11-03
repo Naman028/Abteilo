@@ -1,0 +1,24 @@
+{
+  "description": "Knowledge-graph evaluation cases (GRAPH-09) against the fictional demo company from abteilo.seed. Correct paths must be found with the expected edge kinds, false paths must not be found, restricted entities must stay hidden.",
+  "cases": [
+    {"id": "C1", "group": "correct", "user": "jonas.becker", "op": "path", "from": ["project", "A17"], "to": ["task", "Thermal validation retest"], "kinds": ["has_task"]},
+    {"id": "C2", "group": "correct", "user": "jonas.becker", "op": "path", "from": ["project", "A17"], "to": ["document", "A17 Thermal Validation Report"], "kinds": ["mentions"]},
+    {"id": "C3", "group": "correct", "user": "jonas.becker", "op": "path", "from": ["project", "A17"], "to": ["purchase_request", "Thermal test rig"], "kinds": ["requested_for"]},
+    {"id": "C4", "group": "correct", "user": "sara.koch", "op": "path", "from": ["purchase_request", "Thermal test rig"], "to": ["department", "Engineering"], "kinds": ["requested_in"]},
+    {"id": "C5", "group": "correct", "user": "lena.weber", "op": "path", "from": ["task", "Order replacement cooling module"], "to": ["task", "Thermal validation retest"], "kinds": ["has_task", "has_task"]},
+    {"id": "C6", "group": "correct", "user": "mila.hoffmann", "op": "neighbourhood", "root": ["person", "jonas.becker"], "depth": 1, "include": [["leave_request", "jonas.becker"]], "exclude_kinds": ["purchase_request", "access_request"]},
+
+    {"id": "F1", "group": "false", "user": "jonas.becker", "op": "path", "from": ["project", "A17"], "to": ["project", "B24"], "note": "only a shared assignee links them"},
+    {"id": "F2", "group": "false", "user": "sara.koch", "op": "path", "from": ["purchase_request", "Replacement laptops"], "to": ["purchase_request", "Thermal test rig"], "note": "only departments and people link them"},
+    {"id": "F3", "group": "false", "user": "jonas.becker", "op": "path", "from": ["project", "A17"], "to": ["document", "Supplier Note - Cooling Modules"], "note": "same topic, but the note never names A17"},
+    {"id": "F4", "group": "false", "user": "lena.weber", "op": "path", "from": ["project", "C08"], "to": ["project", "A17"], "note": "same department only"},
+
+    {"id": "R1", "group": "restricted", "user": "lena.weber", "op": "path", "from": ["project", "A17"], "to": ["purchase_request", "Thermal test rig"], "note": "finance record, not her request"},
+    {"id": "R2", "group": "restricted", "user": "sara.koch", "op": "neighbourhood", "root": ["project", "A17"], "depth": 2, "note": "finance cannot read engineering projects"},
+    {"id": "R3", "group": "restricted", "user": "owner", "op": "neighbourhood", "root": ["project", "A17"], "depth": 1, "note": "the owner role does not read department records"},
+    {"id": "R4", "group": "restricted", "user": "lena.weber", "op": "neighbourhood", "root": ["person", "jonas.becker"], "depth": 1, "exclude_kinds": ["leave_request", "access_request", "purchase_request"]},
+    {"id": "R5", "group": "restricted", "user": "jonas.becker", "op": "neighbourhood", "root": ["department", "Human Resources"], "depth": 1, "exclude": [["document", "Salary Bands 2026"]]},
+    {"id": "R6", "group": "restricted", "user": "sara.koch", "op": "neighbourhood", "root": ["purchase_request", "Thermal test rig"], "depth": 2, "exclude_kinds": ["project", "task"], "note": "the request is visible, the project it is for is not"},
+    {"id": "R7", "group": "restricted", "user": "jonas.becker", "op": "neighbourhood", "root": ["document", "Salary Bands 2026"], "depth": 1}
+  ]
+}

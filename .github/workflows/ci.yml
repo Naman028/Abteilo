@@ -1,0 +1,148 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  PYTHON_VERSION: "3.13"
+  NODE_VERSION: "22.14.0"
+
+jobs:
+  backend:
+    name: backend (lint, audit, tests on PostgreSQL)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.7-pg17-bookworm
+        env:
+          POSTGRES_DB: abteilo_test
+          POSTGRES_USER: abteilo_owner
+          POSTGRES_PASSWORD: ci-owner-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U abteilo_owner -d abteilo_test"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      ABTEILO_TEST_DATABASE_URL: postgresql+psycopg://abteilo_app:ci-app-password@127.0.0.1:5432/abteilo_test
+      ABTEILO_TEST_MIGRATION_DATABASE_URL: postgresql+psycopg://abteilo_owner:ci-owner-password@127.0.0.1:5432/abteilo_test
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+      - name: Install
+        run: pip install ".[dev]" pip-audit==2.9.0
+      - name: Lint
+        run: ruff check .
+      - name: Dependency audit
+        run: pip-audit --progress-spinner off
+      - name: Create runtime role
+        run: >
+          PGPASSWORD=ci-owner-password psql -h 127.0.0.1 -U abteilo_owner -d abteilo_test -v ON_ERROR_STOP=1
+          -c "CREATE ROLE abteilo_app LOGIN NOSUPERUSER NOBYPASSRLS PASSWORD 'ci-app-password'"
+      - name: Test (real PostgreSQL)
+        run: python -m pytest
+
+  frontend:
+    name: frontend (audit, typecheck, build)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install
+        run: npm ci --no-fund
+      - name: Dependency audit (runtime dependencies)
+        run: npm audit --omit=dev --audit-level=high
+      - name: Typecheck and build
+        run: npm run build
+
+  container:
+    name: container (build, migrate, smoke test)
+    needs: [backend, frontend]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.7-pg17-bookworm
+        env:
+          POSTGRES_DB: abteilo
+          POSTGRES_USER: abteilo_owner
+          POSTGRES_PASSWORD: ci-owner-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U abteilo_owner -d abteilo"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      IMAGE: abteilo-app:ci
+      APP_URL: postgresql+psycopg://abteilo_app:ci-app-password@127.0.0.1:5432/abteilo
+      OWNER_URL: postgresql+psycopg://abteilo_owner:ci-owner-password@127.0.0.1:5432/abteilo
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Build image
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          load: true
+          push: false
+          tags: ${{ env.IMAGE }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Create runtime role
+        run: >
+          PGPASSWORD=ci-owner-password psql -h 127.0.0.1 -U abteilo_owner -d abteilo -v ON_ERROR_STOP=1
+          -c "CREATE ROLE abteilo_app LOGIN NOSUPERUSER NOBYPASSRLS PASSWORD 'ci-app-password'"
+      - name: Migrate with the image
+        run: >
+          docker run --rm --network host
+          -e ABTEILO_DATABASE_URL="$APP_URL" -e ABTEILO_MIGRATION_DATABASE_URL="$OWNER_URL"
+          "$IMAGE" alembic upgrade head
+      - name: Start API
+        run: >
+          docker run -d --name api --network host
+          -e ABTEILO_DATABASE_URL="$APP_URL" -e ABTEILO_EMBEDDING_MODEL=
+          "$IMAGE"
+      - name: Smoke test
+        run: |
+          curl -fsS --retry 30 --retry-delay 1 --retry-all-errors http://127.0.0.1:8000/readyz
+          curl -fsS http://127.0.0.1:8000/healthz
+          # Production mode: the SPA is served, interactive API docs are off, security headers are set.
+          curl -fsS -o /dev/null http://127.0.0.1:8000/
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8000/api/docs)" = 404
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8000/api/me)" = 401
+          headers="$(curl -fsS -D - -o /dev/null http://127.0.0.1:8000/)"
+          grep -qi '^content-security-policy:' <<<"$headers"
+          grep -qi '^x-frame-options: DENY' <<<"$headers"
+      - name: API logs
+        if: always()
+        run: docker logs api || true

@@ -1,0 +1,733 @@
+{
+  "description": "Fictional evaluation corpus for Abteilo retrieval. All companies, people, numbers and policies are invented.",
+  "users": {
+    "eng": {
+      "department": "engineering",
+      "role": "engineering_contributor"
+    },
+    "fin": {
+      "department": "finance",
+      "role": "finance_analyst"
+    },
+    "hr": {
+      "department": "human_resources",
+      "role": "hr_specialist"
+    },
+    "hr_member": {
+      "department": "human_resources",
+      "role": "department_member"
+    },
+    "it": {
+      "department": "it_security",
+      "role": "it_access_admin"
+    }
+  },
+  "documents": [
+    {
+      "key": "E1",
+      "department": "engineering",
+      "classification": "department",
+      "lang": "en",
+      "title": "A17 Thermal Validation Report",
+      "content": "Project A17 thermal validation, revision 3.\n\nDuring the sustained-load test the prototype exceeded the thermal limit of 85 C; the measured peak was 91 C.\n\nRoot cause: the cooling module supplied in batch 4 does not dissipate enough heat. A replacement cooling module and a new test rig are required before the retest."
+    },
+    {
+      "key": "E2",
+      "department": "engineering",
+      "classification": "company",
+      "lang": "en",
+      "title": "Coding and Review Guidelines",
+      "content": "Every change to production software is reviewed by a second engineer before it is merged.\n\nAutomated tests must pass in continuous integration. The main branch is protected; direct pushes are not allowed."
+    },
+    {
+      "key": "E3",
+      "department": "engineering",
+      "classification": "department",
+      "lang": "en",
+      "title": "Production Line Incident Procedure",
+      "content": "When a production line stops unexpectedly, the operator triggers the stop alarm.\n\nThe shift lead informs the engineering on-call within 15 minutes. A root cause analysis is documented within 48 hours and reviewed in the weekly engineering meeting."
+    },
+    {
+      "key": "E4",
+      "department": "engineering",
+      "classification": "department",
+      "lang": "en",
+      "title": "Sensor Calibration Specification",
+      "content": "Line sensors are calibrated every 90 days. The permitted tolerance is plus or minus 0.2 mm.\n\nEach calibration is recorded in the calibration log with date, technician and measured deviation."
+    },
+    {
+      "key": "E5",
+      "department": "engineering",
+      "classification": "department",
+      "lang": "de",
+      "title": "Prüfstand Wartungsanleitung",
+      "content": "Der Prüfstand wird einmal im Monat gewartet.\n\nDabei werden der Kühlmittelstand geprüft, die Luftfilter gewechselt und die Temperaturfühler kontrolliert. Jede Wartung wird im Wartungsbuch eingetragen."
+    },
+    {
+      "key": "E6",
+      "department": "engineering",
+      "classification": "department",
+      "lang": "en",
+      "title": "Supplier Quality Escalation",
+      "content": "If parts from a supplier are found defective, the affected batch is quarantined immediately.\n\nEngineering opens an 8D report and notifies purchasing so the supplier can be contacted and replacements ordered."
+    },
+    {
+      "key": "F1",
+      "department": "finance",
+      "classification": "company",
+      "lang": "en",
+      "title": "Purchasing Policy",
+      "content": "Purchase requests are submitted with a justification and the budget period.\n\nThe finance department approves or rejects requests. A request can only be approved if the remaining budget covers it. Nobody may approve their own request."
+    },
+    {
+      "key": "F2",
+      "department": "finance",
+      "classification": "company",
+      "lang": "en",
+      "title": "Travel Expense Policy",
+      "content": "Train travel under four hours is booked in second class. Hotel costs are reimbursed up to 120 EUR per night.\n\nReceipts must be submitted within 30 days after the trip, otherwise they cannot be reimbursed."
+    },
+    {
+      "key": "F3",
+      "department": "finance",
+      "classification": "department",
+      "lang": "en",
+      "title": "Q4 Budget Planning Memo",
+      "content": "For the fourth quarter, Engineering has 50000 EUR and IT has 30000 EUR.\n\nDiscretionary spending above 5000 EUR requires sign-off by the chief financial officer until the end of the year."
+    },
+    {
+      "key": "F4",
+      "department": "finance",
+      "classification": "company",
+      "lang": "de",
+      "title": "Reisekostenrichtlinie Kurzfassung",
+      "content": "Bei Dienstreisen über acht Stunden gilt eine Verpflegungspauschale von 14 EUR pro Tag.\n\nFür Fahrten mit dem privaten Auto wird eine Kilometerpauschale von 0,30 EUR erstattet."
+    },
+    {
+      "key": "F5",
+      "department": "finance",
+      "classification": "department",
+      "lang": "en",
+      "title": "Vendor Payment Terms",
+      "content": "Supplier invoices are paid within 30 days of receipt.\n\nWhere a supplier offers it, we take the 2 percent early payment discount by paying within 10 days."
+    },
+    {
+      "key": "F6",
+      "department": "finance",
+      "classification": "confidential",
+      "lang": "en",
+      "title": "Internal Audit Findings 2026",
+      "content": "Confidential. The internal audit found two invoices that were paid without an approved purchase request.\n\nBoth cases were traced to a missing approval step in the old process and have been corrected."
+    },
+    {
+      "key": "H1",
+      "department": "human_resources",
+      "classification": "company",
+      "lang": "en",
+      "title": "Leave Policy",
+      "content": "Full-time employees receive 30 days of annual leave per calendar year.\n\nLeave requests are submitted in advance and decided by HR. Unused leave can be carried over until 31 March of the following year."
+    },
+    {
+      "key": "H2",
+      "department": "human_resources",
+      "classification": "company",
+      "lang": "en",
+      "title": "Remote Work Policy",
+      "content": "Employees may work remotely up to three days per week after agreeing with their manager.\n\nCore hours are 10:00 to 15:00. A one-time home office equipment allowance of 300 EUR is available."
+    },
+    {
+      "key": "H3",
+      "department": "human_resources",
+      "classification": "department",
+      "lang": "en",
+      "title": "Onboarding Checklist",
+      "content": "Before the first day: laptop prepared, accounts created, welcome email sent.\n\nIn the first week the new employee completes the safety training and is assigned a buddy from their team."
+    },
+    {
+      "key": "H4",
+      "department": "human_resources",
+      "classification": "company",
+      "lang": "de",
+      "title": "Elternzeit und Mutterschutz",
+      "content": "Elternzeit kann bis zu drei Jahre pro Kind genommen werden.\n\nDer Antrag ist spätestens sieben Wochen vor Beginn schriftlich bei der Personalabteilung einzureichen."
+    },
+    {
+      "key": "H5",
+      "department": "human_resources",
+      "classification": "confidential",
+      "lang": "en",
+      "title": "Salary Bands 2026",
+      "content": "Confidential. Band E1: 48000 to 56000 EUR. Band E2: 56000 to 68000 EUR. Band E3: 68000 to 82000 EUR."
+    },
+    {
+      "key": "H6",
+      "department": "human_resources",
+      "classification": "company",
+      "lang": "en",
+      "title": "Sick Leave Reporting",
+      "content": "If you are sick, inform your manager before 9:00 on the first day.\n\nA medical certificate is required from the fourth day of absence."
+    },
+    {
+      "key": "I1",
+      "department": "it_security",
+      "classification": "department",
+      "lang": "en",
+      "title": "Access Control Policy",
+      "content": "Role changes are proposed by IT and approved by a security administrator who is neither the proposer nor the recipient.\n\nAccess is reviewed every quarter. Departing employees are disabled on their last day."
+    },
+    {
+      "key": "I2",
+      "department": "it_security",
+      "classification": "company",
+      "lang": "en",
+      "title": "Password and MFA Standard",
+      "content": "Passwords have at least 12 characters and the last five passwords may not be reused.\n\nMulti-factor authentication is required for all remote access."
+    },
+    {
+      "key": "I3",
+      "department": "it_security",
+      "classification": "company",
+      "lang": "en",
+      "title": "Laptop Replacement Policy",
+      "content": "Laptops are replaced every four years or when the manufacturer warranty ends, whichever comes first.\n\nOld devices are wiped and recycled by IT."
+    },
+    {
+      "key": "I4",
+      "department": "it_security",
+      "classification": "department",
+      "lang": "en",
+      "title": "Security Incident Runbook",
+      "content": "If a device may be compromised, disconnect it from the network immediately.\n\nNotify the security officer within one hour and preserve all logs. Do not reinstall the device before forensics are complete."
+    },
+    {
+      "key": "I5",
+      "department": "it_security",
+      "classification": "company",
+      "lang": "de",
+      "title": "VPN Einrichtung",
+      "content": "Installieren Sie den VPN-Client aus dem Softwareportal.\n\nMelden Sie sich mit Ihrem Firmenkonto an und bestätigen Sie die Anmeldung mit der Authenticator-App."
+    },
+    {
+      "key": "I6",
+      "department": "it_security",
+      "classification": "department",
+      "lang": "en",
+      "title": "Backup Schedule",
+      "content": "Servers are backed up every night at 01:00 and backups are kept for 30 days.\n\nA restore from backup is tested every quarter and the result is documented."
+    }
+  ],
+  "questions": [
+    {
+      "id": "lex-1",
+      "user": "eng",
+      "kind": "keyword",
+      "q": "A17 thermal validation retest",
+      "relevant": [
+        "E1"
+      ]
+    },
+    {
+      "id": "lex-2",
+      "user": "fin",
+      "kind": "keyword",
+      "q": "travel expense hotel limit",
+      "relevant": [
+        "F2"
+      ]
+    },
+    {
+      "id": "lex-3",
+      "user": "hr",
+      "kind": "keyword",
+      "q": "leave policy carry over",
+      "relevant": [
+        "H1"
+      ]
+    },
+    {
+      "id": "lex-4",
+      "user": "it",
+      "kind": "keyword",
+      "q": "password multi-factor authentication standard",
+      "relevant": [
+        "I2"
+      ]
+    },
+    {
+      "id": "lex-5",
+      "user": "eng",
+      "kind": "keyword",
+      "q": "sensor calibration tolerance",
+      "relevant": [
+        "E4"
+      ]
+    },
+    {
+      "id": "lex-6",
+      "user": "it",
+      "kind": "keyword",
+      "q": "backup schedule nightly",
+      "relevant": [
+        "I6"
+      ]
+    },
+    {
+      "id": "para-1",
+      "user": "eng",
+      "kind": "paraphrase",
+      "q": "why did the prototype overheat?",
+      "relevant": [
+        "E1"
+      ]
+    },
+    {
+      "id": "para-2",
+      "user": "eng",
+      "kind": "paraphrase",
+      "q": "what happens when an assembly line halts?",
+      "relevant": [
+        "E3"
+      ]
+    },
+    {
+      "id": "para-3",
+      "user": "eng",
+      "kind": "paraphrase",
+      "q": "a vendor delivered faulty components, what do we do?",
+      "relevant": [
+        "E6"
+      ]
+    },
+    {
+      "id": "para-4",
+      "user": "fin",
+      "kind": "paraphrase",
+      "q": "how much can I spend on accommodation on a business trip?",
+      "relevant": [
+        "F2"
+      ]
+    },
+    {
+      "id": "para-5",
+      "user": "fin",
+      "kind": "paraphrase",
+      "q": "when do we settle bills from vendors?",
+      "relevant": [
+        "F5"
+      ]
+    },
+    {
+      "id": "para-6",
+      "user": "hr",
+      "kind": "paraphrase",
+      "q": "how many days a week can I work from home?",
+      "relevant": [
+        "H2"
+      ]
+    },
+    {
+      "id": "para-7",
+      "user": "hr",
+      "kind": "paraphrase",
+      "q": "what should a new hire get in their first week?",
+      "relevant": [
+        "H3"
+      ]
+    },
+    {
+      "id": "para-8",
+      "user": "hr",
+      "kind": "paraphrase",
+      "q": "I'm ill, when do I need a doctor's note?",
+      "relevant": [
+        "H6"
+      ]
+    },
+    {
+      "id": "para-9",
+      "user": "it",
+      "kind": "paraphrase",
+      "q": "how often do we get new notebooks?",
+      "relevant": [
+        "I3"
+      ]
+    },
+    {
+      "id": "para-10",
+      "user": "it",
+      "kind": "paraphrase",
+      "q": "a computer may have been hacked, what are the first steps?",
+      "relevant": [
+        "I4"
+      ]
+    },
+    {
+      "id": "para-11",
+      "user": "eng",
+      "kind": "paraphrase",
+      "q": "who has to look at my code before it goes in?",
+      "relevant": [
+        "E2"
+      ]
+    },
+    {
+      "id": "para-12",
+      "user": "fin",
+      "kind": "paraphrase",
+      "q": "can I sign off my own procurement?",
+      "relevant": [
+        "F1"
+      ]
+    },
+    {
+      "id": "de-1",
+      "user": "eng",
+      "kind": "german",
+      "q": "Wie oft muss der Prüfstand gewartet werden?",
+      "relevant": [
+        "E5"
+      ]
+    },
+    {
+      "id": "de-2",
+      "user": "fin",
+      "kind": "german",
+      "q": "Wie hoch ist die Verpflegungspauschale?",
+      "relevant": [
+        "F4"
+      ]
+    },
+    {
+      "id": "de-3",
+      "user": "hr",
+      "kind": "german",
+      "q": "Wie lange kann ich Elternzeit nehmen?",
+      "relevant": [
+        "H4"
+      ]
+    },
+    {
+      "id": "de-4",
+      "user": "it",
+      "kind": "german",
+      "q": "Wie richte ich das VPN ein?",
+      "relevant": [
+        "I5"
+      ]
+    },
+    {
+      "id": "x-1",
+      "user": "hr",
+      "kind": "cross_lingual_de_en",
+      "q": "Wie viele Urlaubstage habe ich pro Jahr?",
+      "relevant": [
+        "H1"
+      ]
+    },
+    {
+      "id": "x-2",
+      "user": "it",
+      "kind": "cross_lingual_de_en",
+      "q": "Wie lang muss mein Passwort sein?",
+      "relevant": [
+        "I2"
+      ]
+    },
+    {
+      "id": "x-3",
+      "user": "fin",
+      "kind": "cross_lingual_de_en",
+      "q": "Bis wann muss ich Reisebelege einreichen?",
+      "relevant": [
+        "F2"
+      ]
+    },
+    {
+      "id": "x-4",
+      "user": "eng",
+      "kind": "cross_lingual_de_en",
+      "q": "Was tun bei einem Stillstand der Produktionslinie?",
+      "relevant": [
+        "E3"
+      ]
+    },
+    {
+      "id": "x-5",
+      "user": "hr",
+      "kind": "cross_lingual_de_en",
+      "q": "Darf ich von zu Hause arbeiten?",
+      "relevant": [
+        "H2"
+      ]
+    },
+    {
+      "id": "x-6",
+      "user": "it",
+      "kind": "cross_lingual_en_de",
+      "q": "how do I set up the VPN client?",
+      "relevant": [
+        "I5"
+      ]
+    },
+    {
+      "id": "x-7",
+      "user": "hr",
+      "kind": "cross_lingual_en_de",
+      "q": "how long can parental leave last?",
+      "relevant": [
+        "H4"
+      ]
+    },
+    {
+      "id": "x-8",
+      "user": "fin",
+      "kind": "cross_lingual_en_de",
+      "q": "what is the mileage allowance for my own car?",
+      "relevant": [
+        "F4"
+      ]
+    },
+    {
+      "id": "x-9",
+      "user": "eng",
+      "kind": "cross_lingual_en_de",
+      "q": "how often is the test bench maintained?",
+      "relevant": [
+        "E5"
+      ]
+    },
+    {
+      "id": "x-10",
+      "user": "hr_member",
+      "kind": "cross_lingual_de_en",
+      "q": "Ab wann brauche ich eine Krankmeldung vom Arzt?",
+      "relevant": [
+        "H6"
+      ]
+    },
+    {
+      "id": "x-11",
+      "user": "it",
+      "kind": "cross_lingual_de_en",
+      "q": "Wann werden Laptops ausgetauscht?",
+      "relevant": [
+        "I3"
+      ]
+    },
+    {
+      "id": "id-1",
+      "user": "eng",
+      "kind": "identifier",
+      "q": "8D report",
+      "relevant": [
+        "E6"
+      ]
+    },
+    {
+      "id": "id-2",
+      "user": "fin",
+      "kind": "identifier",
+      "q": "120 EUR per night",
+      "relevant": [
+        "F2"
+      ]
+    },
+    {
+      "id": "id-3",
+      "user": "hr",
+      "kind": "identifier",
+      "q": "Band E2",
+      "relevant": [
+        "H5"
+      ]
+    },
+    {
+      "id": "id-4",
+      "user": "fin",
+      "kind": "identifier",
+      "q": "0,30 EUR",
+      "relevant": [
+        "F4"
+      ]
+    },
+    {
+      "id": "id-5",
+      "user": "eng",
+      "kind": "identifier",
+      "q": "revision 3 A17",
+      "relevant": [
+        "E1"
+      ]
+    }
+  ],
+  "security": [
+    {
+      "id": "sec-1",
+      "user": "eng",
+      "q": "salary bands for engineers",
+      "forbidden": [
+        "H5",
+        "F6"
+      ]
+    },
+    {
+      "id": "sec-2",
+      "user": "hr_member",
+      "q": "what are the salary ranges?",
+      "forbidden": [
+        "H5"
+      ]
+    },
+    {
+      "id": "sec-3",
+      "user": "it",
+      "q": "internal audit findings unapproved invoices",
+      "forbidden": [
+        "F6"
+      ]
+    },
+    {
+      "id": "sec-4",
+      "user": "eng",
+      "q": "how much do employees earn per year",
+      "forbidden": [
+        "H5"
+      ]
+    },
+    {
+      "id": "sec-5",
+      "user": "fin",
+      "q": "Gehaltsbänder 2026",
+      "forbidden": [
+        "H5"
+      ]
+    }
+  ],
+  "holdout": [
+    {
+      "id": "ho-1",
+      "user": "eng",
+      "kind": "paraphrase",
+      "q": "maximum temperature the prototype reached",
+      "relevant": [
+        "E1"
+      ]
+    },
+    {
+      "id": "ho-2",
+      "user": "eng",
+      "kind": "cross_lingual_de_en",
+      "q": "Wie wird eine Sensorkalibrierung dokumentiert?",
+      "relevant": [
+        "E4"
+      ]
+    },
+    {
+      "id": "ho-3",
+      "user": "fin",
+      "kind": "paraphrase",
+      "q": "discount for paying suppliers early",
+      "relevant": [
+        "F5"
+      ]
+    },
+    {
+      "id": "ho-4",
+      "user": "fin",
+      "kind": "cross_lingual_de_en",
+      "q": "Wer muss Ausgaben über 5000 EUR freigeben?",
+      "relevant": [
+        "F3"
+      ]
+    },
+    {
+      "id": "ho-5",
+      "user": "hr",
+      "kind": "paraphrase",
+      "q": "money for home office equipment",
+      "relevant": [
+        "H2"
+      ]
+    },
+    {
+      "id": "ho-6",
+      "user": "hr",
+      "kind": "german",
+      "q": "Bis wann muss der Antrag auf Elternzeit gestellt werden?",
+      "relevant": [
+        "H4"
+      ]
+    },
+    {
+      "id": "ho-7",
+      "user": "it",
+      "kind": "paraphrase",
+      "q": "what happens to old laptops?",
+      "relevant": [
+        "I3"
+      ]
+    },
+    {
+      "id": "ho-8",
+      "user": "it",
+      "kind": "paraphrase",
+      "q": "how long are backups kept?",
+      "relevant": [
+        "I6"
+      ]
+    }
+  ],
+  "notes": "questions: development set used while tuning (stopwords, AND-matching inside hybrid, distance threshold). holdout: written after tuning, never used to change the system; reported separately. no_answer: written on 2026-10-20 before any measurement; no document answers them. A correct system returns nothing (abstains); they are measured, never tuned on.",
+  "no_answer": [
+    {
+      "id": "na-1",
+      "user": "eng",
+      "q": "What is on the canteen menu on Friday?"
+    },
+    {
+      "id": "na-2",
+      "user": "eng",
+      "q": "Wie lange ist die Kantine geöffnet?"
+    },
+    {
+      "id": "na-3",
+      "user": "fin",
+      "q": "How do I lease a company car?"
+    },
+    {
+      "id": "na-4",
+      "user": "fin",
+      "q": "What is our share price target for next year?"
+    },
+    {
+      "id": "na-5",
+      "user": "hr",
+      "q": "When is the summer party?"
+    },
+    {
+      "id": "na-6",
+      "user": "hr_member",
+      "q": "Gibt es einen Zuschuss für das Fitnessstudio?"
+    },
+    {
+      "id": "na-7",
+      "user": "it",
+      "q": "How do I order business cards?"
+    },
+    {
+      "id": "na-8",
+      "user": "it",
+      "q": "Where can visitors park?"
+    },
+    {
+      "id": "na-9",
+      "user": "eng",
+      "q": "Who won the football tournament?"
+    },
+    {
+      "id": "na-10",
+      "user": "hr",
+      "q": "Can I bring my dog to the office?"
+    }
+  ]
+}

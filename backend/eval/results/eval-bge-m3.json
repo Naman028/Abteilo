@@ -1,0 +1,1071 @@
+{
+  "model": "bge-m3",
+  "dimensions": 1024,
+  "index": {
+    "seconds": 0.0,
+    "status": {
+      "indexed": 24
+    }
+  },
+  "embed_query_ms": {
+    "p50": 424,
+    "p95": 545
+  },
+  "sweep": {
+    "0.45": {
+      "vector": {
+        "recall@5": 0.842,
+        "recall@10": 0.842,
+        "mrr@10": 0.829,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 0.857,
+            "mrr@10": 0.857,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 0.5,
+            "mrr@10": 0.375,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 0.4,
+            "mrr@10": 0.4,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.3,
+          "p95": 3.9
+        },
+        "misses": [
+          "x-3",
+          "x-8",
+          "x-9",
+          "id-1",
+          "id-4",
+          "id-5"
+        ],
+        "no_answer": {
+          "n": 10,
+          "abstained": 10,
+          "answered": []
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      },
+      "hybrid": {
+        "recall@5": 0.921,
+        "recall@10": 0.921,
+        "mrr@10": 0.908,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 0.857,
+            "mrr@10": 0.857,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 0.5,
+            "mrr@10": 0.375,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 3.1,
+          "p95": 4.3
+        },
+        "misses": [
+          "x-3",
+          "x-8",
+          "x-9"
+        ],
+        "no_answer": {
+          "n": 10,
+          "abstained": 10,
+          "answered": []
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      }
+    },
+    "0.55": {
+      "keyword": {
+        "recall@5": 0.579,
+        "recall@10": 0.579,
+        "mrr@10": 0.579,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 0.143,
+            "mrr@10": 0.143,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 0.25,
+            "mrr@10": 0.25,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 0.417,
+            "mrr@10": 0.417,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 0.7,
+          "p95": 0.9
+        },
+        "misses": [
+          "para-3",
+          "para-5",
+          "para-8",
+          "para-9",
+          "para-10",
+          "para-11",
+          "para-12",
+          "x-1",
+          "x-2",
+          "x-3",
+          "x-4",
+          "x-5",
+          "x-7",
+          "x-8",
+          "x-9",
+          "x-10"
+        ],
+        "no_answer": {
+          "n": 10,
+          "abstained": 8,
+          "answered": [
+            {
+              "id": "na-4",
+              "top": "H1",
+              "distance": null,
+              "match": "keyword"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": null,
+              "match": "keyword"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 0.875,
+          "recall@10": 0.875,
+          "mrr@10": 0.875,
+          "n": 8,
+          "misses": [
+            "ho-2"
+          ]
+        }
+      },
+      "vector": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.954,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.85,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 1.8,
+          "p95": 2.2
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 5,
+          "answered": [
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      },
+      "hybrid": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.961,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.9,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.5,
+          "p95": 3.2
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 5,
+          "answered": [
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      }
+    },
+    "0.65": {
+      "vector": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.954,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.85,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.4,
+          "p95": 3.2
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 2,
+          "answered": [
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-4",
+              "top": "F3",
+              "distance": 0.5809,
+              "match": "semantic"
+            },
+            {
+              "id": "na-5",
+              "top": "H1",
+              "distance": 0.6231,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-8",
+              "top": "F2",
+              "distance": 0.5792,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      },
+      "hybrid": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.961,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.9,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.8,
+          "p95": 3.4
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 2,
+          "answered": [
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-4",
+              "top": "F3",
+              "distance": 0.5809,
+              "match": "semantic"
+            },
+            {
+              "id": "na-5",
+              "top": "H1",
+              "distance": 0.6231,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-8",
+              "top": "F2",
+              "distance": 0.5792,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      }
+    },
+    "0.75": {
+      "vector": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.954,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.85,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.1,
+          "p95": 2.5
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 0,
+          "answered": [
+            {
+              "id": "na-1",
+              "top": "F2",
+              "distance": 0.6602,
+              "match": "semantic"
+            },
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-4",
+              "top": "F3",
+              "distance": 0.5809,
+              "match": "semantic"
+            },
+            {
+              "id": "na-5",
+              "top": "H1",
+              "distance": 0.6231,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-8",
+              "top": "F2",
+              "distance": 0.5792,
+              "match": "semantic"
+            },
+            {
+              "id": "na-9",
+              "top": "I2",
+              "distance": 0.7408,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      },
+      "hybrid": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.961,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.9,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.8,
+          "p95": 3.3
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 0,
+          "answered": [
+            {
+              "id": "na-1",
+              "top": "F2",
+              "distance": 0.6602,
+              "match": "semantic"
+            },
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-4",
+              "top": "F3",
+              "distance": 0.5809,
+              "match": "semantic"
+            },
+            {
+              "id": "na-5",
+              "top": "H1",
+              "distance": 0.6231,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-8",
+              "top": "F2",
+              "distance": 0.5792,
+              "match": "semantic"
+            },
+            {
+              "id": "na-9",
+              "top": "I2",
+              "distance": 0.7408,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      }
+    },
+    "2.0": {
+      "vector": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.954,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.85,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.4,
+          "p95": 3.4
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 0,
+          "answered": [
+            {
+              "id": "na-1",
+              "top": "F2",
+              "distance": 0.6602,
+              "match": "semantic"
+            },
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-4",
+              "top": "F3",
+              "distance": 0.5809,
+              "match": "semantic"
+            },
+            {
+              "id": "na-5",
+              "top": "H1",
+              "distance": 0.6231,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-8",
+              "top": "F2",
+              "distance": 0.5792,
+              "match": "semantic"
+            },
+            {
+              "id": "na-9",
+              "top": "I2",
+              "distance": 0.7408,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      },
+      "hybrid": {
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.961,
+        "by_kind": {
+          "cross_lingual_de_en": {
+            "recall@5": 1.0,
+            "mrr@10": 0.929,
+            "n": 7
+          },
+          "cross_lingual_en_de": {
+            "recall@5": 1.0,
+            "mrr@10": 0.875,
+            "n": 4
+          },
+          "german": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 4
+          },
+          "identifier": {
+            "recall@5": 1.0,
+            "mrr@10": 0.9,
+            "n": 5
+          },
+          "keyword": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 6
+          },
+          "paraphrase": {
+            "recall@5": 1.0,
+            "mrr@10": 1.0,
+            "n": 12
+          }
+        },
+        "search_ms": {
+          "p50": 2.8,
+          "p95": 3.2
+        },
+        "misses": [],
+        "no_answer": {
+          "n": 10,
+          "abstained": 0,
+          "answered": [
+            {
+              "id": "na-1",
+              "top": "F2",
+              "distance": 0.6602,
+              "match": "semantic"
+            },
+            {
+              "id": "na-2",
+              "top": "H2",
+              "distance": 0.4825,
+              "match": "semantic"
+            },
+            {
+              "id": "na-3",
+              "top": "H1",
+              "distance": 0.5399,
+              "match": "semantic"
+            },
+            {
+              "id": "na-4",
+              "top": "F3",
+              "distance": 0.5809,
+              "match": "semantic"
+            },
+            {
+              "id": "na-5",
+              "top": "H1",
+              "distance": 0.6231,
+              "match": "semantic"
+            },
+            {
+              "id": "na-6",
+              "top": "F1",
+              "distance": 0.5393,
+              "match": "semantic"
+            },
+            {
+              "id": "na-7",
+              "top": "F1",
+              "distance": 0.5138,
+              "match": "semantic"
+            },
+            {
+              "id": "na-8",
+              "top": "F2",
+              "distance": 0.5792,
+              "match": "semantic"
+            },
+            {
+              "id": "na-9",
+              "top": "I2",
+              "distance": 0.7408,
+              "match": "semantic"
+            },
+            {
+              "id": "na-10",
+              "top": "H2",
+              "distance": 0.4936,
+              "match": "semantic"
+            }
+          ]
+        },
+        "holdout": {
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "n": 8,
+          "misses": []
+        }
+      }
+    }
+  },
+  "unauthorised_hits": 0,
+  "security_violations": [],
+  "default_threshold": 0.55,
+  "run_at": "2026-10-19T23:40:51+00:00"
+}
