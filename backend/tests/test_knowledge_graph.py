@@ -121,6 +121,20 @@ def test_changed_and_archived_records_end_outdated_edges(login, projected, demo)
                               " WHERE valid_to IS NOT NULL"))
 
 
+def test_ending_an_edge_survives_a_clock_step_back(projected, demo):
+    # An NTP or WSL resync can step the clock back between creating and ending an edge. Ending must
+    # still satisfy valid_to >= valid_from instead of failing the whole projection run.
+    with owner_conn() as conn:
+        edge = conn.execute(text("UPDATE core.graph_relationships SET valid_from = now() + interval '1 hour'"
+                                 " WHERE id = (SELECT id FROM core.graph_relationships WHERE valid_to IS NULL LIMIT 1)"
+                                 " RETURNING id")).scalar_one()
+    with transaction(demo) as conn:
+        assert graph_projection._end(conn, edge, "source_changed") == 1
+    with owner_conn() as conn:
+        assert conn.execute(text("SELECT valid_to = valid_from FROM core.graph_relationships WHERE id = :id"),
+                            {"id": edge}).scalar_one()
+
+
 def _queue_extraction(*relationships):
     PROVIDERS["scripted"].replies.append(json.dumps({"relationships": list(relationships)}))
 

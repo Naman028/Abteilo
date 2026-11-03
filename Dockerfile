@@ -1,5 +1,5 @@
 # --- frontend build ---------------------------------------------------------------
-FROM node:22.14.0-alpine AS web
+FROM node:22.23.4-alpine AS web
 WORKDIR /web
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci --no-audit --no-fund
@@ -7,7 +7,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # --- runtime -------------------------------------------------------------------------
-FROM python:3.13.2-slim-bookworm
+FROM python:3.13.18-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
     ABTEILO_FRONTEND_DIST=/app/web
 WORKDIR /app

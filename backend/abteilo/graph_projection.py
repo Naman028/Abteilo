@@ -198,8 +198,10 @@ def _insert_edge(conn: Connection, edge: _Edge) -> None:
 
 
 def _end(conn: Connection, relationship_id: UUID, reason: str) -> int:
+    # A clock stepped back (NTP, WSL resync) must not end an edge before it started.
     return conn.execute(text(
-        "UPDATE core.graph_relationships SET valid_to = now(), ended_reason = :r WHERE id = :id AND valid_to IS NULL"),
+        "UPDATE core.graph_relationships SET valid_to = greatest(now(), valid_from), ended_reason = :r"
+        " WHERE id = :id AND valid_to IS NULL"),
         {"id": relationship_id, "r": reason}).rowcount
 
 
