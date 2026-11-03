@@ -59,6 +59,11 @@ def database():
     # quarantined graph rows) block downgrades by design, as they would in a real database.
     owner = create_engine(OWNER_URL)
     with owner.begin() as conn:
+        # Inspection through owner_conn relies on FORCE ROW LEVEL SECURITY; a role that bypasses RLS would let
+        # tenant-isolation assertions see every company and fail (or pass) for the wrong reason.
+        if conn.execute(text("SELECT rolsuper OR rolbypassrls FROM pg_roles WHERE rolname = current_user")).scalar():
+            pytest.exit("ABTEILO_TEST_MIGRATION_DATABASE_URL must use a schema owner that is neither superuser "
+                        "nor BYPASSRLS", returncode=2)
         if conn.execute(text("SELECT to_regclass('core.companies')")).scalar():
             conn.execute(text("TRUNCATE core.companies, core.users CASCADE"))
     owner.dispose()

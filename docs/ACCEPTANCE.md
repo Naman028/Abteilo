@@ -685,3 +685,9 @@ the SPA has no SSR and links only to constants or server UUIDs; fix needs React 
 right after WSL cold-started (`valid_to >= valid_from` check rejected `valid_to = now()`); it passed in the three
 full runs that followed. Projection runs in that test are sequential, so a WSL clock step is the likely cause. If
 it recurs, end edges with `statement_timestamp()` instead of `now()`.
+
+**First GitHub CI run (2026-11-03):** `test_projection_stays_inside_the_company` failed because the CI database
+used the pgvector image's default, which makes the schema owner a superuser; superusers bypass RLS, so the test's
+owner-role inspection saw both companies. The application role was unaffected. CI now creates a non-superuser
+`abteilo_owner` as the local setup does (104 passed on PostgreSQL 17 in a reproduction), and `conftest.py` refuses
+to run with a superuser or BYPASSRLS owner.

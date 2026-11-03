@@ -25,13 +25,13 @@ jobs:
     services:
       postgres:
         image: pgvector/pgvector:0.8.7-pg17-bookworm
+        # The image's superuser stays `postgres`. The schema owner must not be a superuser: superusers
+        # bypass row-level security, which the tenant-isolation tests inspect through the owner role.
         env:
-          POSTGRES_DB: abteilo_test
-          POSTGRES_USER: abteilo_owner
-          POSTGRES_PASSWORD: ci-owner-password
+          POSTGRES_PASSWORD: ci-postgres-password
         ports: ["5432:5432"]
         options: >-
-          --health-cmd "pg_isready -U abteilo_owner -d abteilo_test"
+          --health-cmd "pg_isready -U postgres"
           --health-interval 5s --health-timeout 3s --health-retries 20
     env:
       ABTEILO_TEST_DATABASE_URL: postgresql+psycopg://abteilo_app:ci-app-password@127.0.0.1:5432/abteilo_test
@@ -54,10 +54,17 @@ jobs:
         run: ruff check .
       - name: Dependency audit
         run: pip-audit --progress-spinner off
-      - name: Create runtime role
-        run: >
-          PGPASSWORD=ci-owner-password psql -h 127.0.0.1 -U abteilo_owner -d abteilo_test -v ON_ERROR_STOP=1
-          -c "CREATE ROLE abteilo_app LOGIN NOSUPERUSER NOBYPASSRLS PASSWORD 'ci-app-password'"
+      - name: Create roles, database and pgvector
+        env:
+          PGPASSWORD: ci-postgres-password
+        run: |
+          psql -h 127.0.0.1 -U postgres -v ON_ERROR_STOP=1 <<'SQL'
+          CREATE ROLE abteilo_owner LOGIN NOSUPERUSER NOBYPASSRLS PASSWORD 'ci-owner-password';
+          CREATE ROLE abteilo_app LOGIN NOSUPERUSER NOBYPASSRLS PASSWORD 'ci-app-password';
+          CREATE DATABASE abteilo_test OWNER abteilo_owner;
+          \c abteilo_test
+          CREATE EXTENSION vector;
+          SQL
       - name: Test (real PostgreSQL)
         run: python -m pytest
 
