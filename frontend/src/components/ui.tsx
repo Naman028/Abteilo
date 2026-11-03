@@ -1,7 +1,7 @@
 import { KeyboardEvent, ReactNode, useRef } from "react";
 import { Link } from "react-router-dom";
 
-/** Breadcrumb + title + description, the start of every routed page (design-system MASTER §3). */
+/** Breadcrumb + title + description, the start of every routed page. */
 export function PageHeader({ crumbs, title, description, meta, actions }: {
   crumbs: { label: string; to?: string }[];
   title: ReactNode;

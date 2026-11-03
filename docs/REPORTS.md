@@ -1,7 +1,6 @@
 # Reports and answer exports
 
-Status: **functional, developer-tested; not production-accepted.** Measured results are in
-[EVALUATION.md](EVALUATION.md#reports-evaluation-real-qwen) and [ACCEPTANCE.md](ACCEPTANCE.md#block-d-and-ai-authored-reports--acceptance-report).
+Status: **functional and developer-tested; not production-hardened.**
 
 Abteilo has two separate document features. They are deliberately different and the UI keeps them apart.
 
@@ -14,8 +13,7 @@ Abteilo has two separate document features. They are deliberately different and 
 | Stored | Yes: typed content in `conv.reports`, owner-private, expires | No (rendered from the stored chat reply) |
 | Endpoint | `GET /api/reports/{id}?format=pdf\|docx` | `GET /api/conversations/{c}/messages/{m}/export?format=pdf\|docx` |
 
-Editing an existing uploaded Word document is **not** implemented; it remains the separate design in
-[DOCUMENT_EDITING_DESIGN.md](DOCUMENT_EDITING_DESIGN.md).
+Editing an existing uploaded Word document is **not** implemented.
 
 ## Report kinds
 
@@ -108,7 +106,7 @@ bullets); all Unicode is kept.
 - Reports are snapshots: a download shows the data as of generation, clearly dated. Generate a new report for
   current data.
 - The model's observations are often rejected by the verifier when it combines facts, adds causes or uses
-  negations; the tables carry the facts regardless. See the measured rates in EVALUATION.md.
+  negations; the tables carry the facts regardless.
 - Report kinds are fixed per department template. There is no period selection (for example "Q3 only") yet.
 - Stopping a report while the model writes it cancels generation; stopping during data collection lets the
   collection finish (seconds) and then discards it. Nothing is stored for a stopped report.

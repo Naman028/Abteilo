@@ -31,3 +31,18 @@ Thumbs.db
 .vscode/
 .idea/
 *.tsbuildinfo
+
+# Local notes kept out of the repository
+PASSWORDS.md
+# Internal design, review and evaluation notes (kept locally, not published)
+docs/ACCEPTANCE.md
+docs/ENGINEERING_CONTRACT.md
+docs/BLOCK_D_DESIGN.md
+docs/INTELLIGENCE_DESIGN.md
+docs/DOCUMENT_EDITING_DESIGN.md
+docs/EVALUATION.md
+design-system/
+backend/eval/results/
+backend/eval/sealed/*.md
+CLAUDE.md
+.claude/

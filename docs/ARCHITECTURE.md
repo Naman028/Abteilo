@@ -6,7 +6,7 @@ Abteilo is a modular monolith:
 - one background worker;
 - a React single-page app served by the API.
 
-**Status (2026-10-20):** Blocks A, B and C are developer-tested milestones. Block D is implemented on the developer machine, with acceptance pending review (`BLOCK_D_DESIGN.md`, `ACCEPTANCE.md`).
+**Status:** developer-tested against real PostgreSQL; not production-hardened.
 
 ```mermaid
 flowchart TD
@@ -45,12 +45,12 @@ flowchart LR
     Q[Question] --> PL[Plan<br/>permitted tools only] --> T[Tools<br/>records · aggregates · hybrid docs] --> E[Evidence E1..E8<br/>authority + as-of] --> A[Answer<br/>claims cite ids] --> V[Verify each claim] --> R[Reply + evidence drawer<br/>citations re-authorised on open]
 ```
 
-Block D (built) adds:
+Combined answers add:
 - graph evidence with live-record re-reads (`graph.related`);
 - information needs and a sufficiency gate before the answer;
 - verified relationship and causal rules;
 - outcomes (`answered`, `partial`, `insufficient`, `conflicting`) with the missing facts;
-- a streaming endpoint that sends each claim only after verification (`BLOCK_D_DESIGN.md` §2 and §10).
+- a streaming endpoint that sends each claim only after verification.
 
 ## Data planes
 
@@ -66,7 +66,7 @@ has no `BYPASSRLS`; migrations run as the schema owner.
 
 ## Request flow of an assistant question
 
-This is the Block D flow (`ai/orchestrator.py`), the same for `POST /api/assistant/messages` and `/stream`.
+This is the combined-answer flow (`ai/orchestrator.py`), the same for `POST /api/assistant/messages` and `/stream`.
 
 1. **Principal.** Session cookie → principal; grants and membership status are loaded fresh on every request.
 2. **Workspace check.** The user must belong to the department, or hold the owner report permission for the owner workspace.
@@ -120,7 +120,7 @@ equivalents) does **not** go through the question flow above. Instead:
 labelled as an export of a past answer that was not re-checked. It re-checks the workspace, every tool the
 answer used and every document source.
 
-## Knowledge graph (Block C)
+## Knowledge graph
 
 - **Projection.** The worker rebuilds each company's graph from its business records in one transaction per company. The run is idempotent, so a repeat with no changes changes nothing, and a failure rolls back as a whole. Person entities are scoped to the company's memberships. The database refuses a person without a membership in the same company (GRAPH-11, migration `0006`).
 - **Relationships.**

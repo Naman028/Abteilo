@@ -36,8 +36,8 @@ models by default.
 - **Hybrid document search.** Keyword and semantic search (pgvector + local bge-m3 embeddings, English
   and German) are combined with Reciprocal Rank Fusion. Every candidate passes the user's permission
   rules inside the database query.
-  - Measured on an included evaluation set: Recall@5 1.0, with zero unauthorised results
-    (see [docs/EVALUATION.md](docs/EVALUATION.md)).
+  - Measured on the included evaluation set (`python -m eval.retrieval`): Recall@5 1.0, with zero
+    unauthorised results.
   - If the embedding model is down, search falls back to keyword-only.
 - **One local model by default.** Every department and the owner use Qwen 2.5 7B through
   Ollama, with bge-m3 for document search embeddings. Departments differ by permissions,
@@ -120,10 +120,11 @@ Enter in that terminal to stop.
 Passwords are stored only as Argon2 hashes in `core.users`; nobody can read them back. If sign-in is
 rejected, run `run-dev.cmd -ResetDemoPassword` to set every demo account to the current `.env` value.
 Signed-in users change their own password under *Account & privacy* (current password required; their
-other sessions are signed out). A forgotten password is reset by the owner or an administrator under People & roles in the console (full guide: [PASSWORDS.md](PASSWORDS.md)). If the
-owner is locked out, someone with server access runs `reset-password.cmd <email>` from the project
-folder (or `python -m abteilo.reset_password <email>` inside `backend`)
-(prompts for the new password, signs that person out everywhere, and is audited). There is no
+other sessions are signed out). A forgotten password is reset by the owner or an administrator under
+People & roles in the console. If the owner is locked out, someone with server access runs
+`reset-password.cmd <email>` from the project folder (or `python -m abteilo.reset_password <email>` inside
+`backend`), which prompts for the new password, signs that person out everywhere and is audited. Five failed
+sign-ins for one email within 15 minutes lock it for 15 minutes; a reset clears the lock. There is no
 self-service email reset yet: that needs an outgoing mail service.
 
 ## Quality gates and CI/CD
@@ -164,19 +165,16 @@ switched at the bottom of the left menu.
 
 ## Documentation
 
-- [Engineering contract](docs/ENGINEERING_CONTRACT.md): inputs, outputs, invariants
 - [Architecture](docs/ARCHITECTURE.md): components, data planes, request flow, extending
 - [Privacy and GDPR](docs/PRIVACY_AND_GDPR.md): GDPR, BDSG, BetrVG, AI Act mapping
-- [Acceptance report](docs/ACCEPTANCE.md): requirements, tests, Docker and browser evidence, open risks
-- [Retrieval evaluation](docs/EVALUATION.md): measured recall, latency and security of hybrid search
-- [Intelligence layer design](docs/INTELLIGENCE_DESIGN.md): hybrid retrieval (built), knowledge graph (built, accepted for development) and combined answers (designed)
-- [Block D design](docs/BLOCK_D_DESIGN.md): unified enterprise intelligence (contracts, evidence sufficiency, security, evaluation); awaiting review, not implemented
+- [Reports](docs/REPORTS.md): AI-authored PDF/Word reports and answer exports
 
 ## Limits
 
 - Retrieval quality was measured on a small synthetic corpus; re-run `python -m eval.retrieval --model bge-m3`
-  on representative documents before relying on it. Graph relationships suggested from documents need a reviewer;
-  combined graph + document answers (Block D) are not built.
+  on representative documents before relying on it. Graph relationships suggested from documents need a reviewer.
+  Combined answers across documents, the graph and live records are developer-tested; questions that need
+  several reasoning steps (multi-hop) are not yet answered reliably.
 - Claim verification checks sources, numbers, identifiers and statuses
   deterministically. It cannot prove that a narrative sentence is true. Such
   sentences are labelled "cited", never "verified".

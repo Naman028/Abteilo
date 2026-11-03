@@ -1,4 +1,4 @@
-/* Abteilo design tokens: see design-system/abteilo/MASTER.md. Change values here, not per page.
+/* Abteilo design tokens. Change values here, not per page.
    Neutral greys with near-black / near-white primary actions, in the manner of current chat products.
    Theme: light by default; dark via the OS when no choice is stored, or via data-theme="dark". */
 :root {

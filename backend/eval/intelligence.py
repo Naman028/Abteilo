@@ -1,4 +1,4 @@
-"""Block D evaluation (docs/BLOCK_D_DESIGN.md section 6).
+"""End-to-end evaluation of combined answers (documents, knowledge graph, live records).
 
     python -m eval.intelligence --level L1                       # deterministic probes, scripted model (CI)
     python -m eval.intelligence --level L2 --config C2 --runs 3  # real local model, end to end
@@ -261,7 +261,7 @@ def main() -> None:
     if args.level == "L1":
         os.environ["ABTEILO_EMBEDDING_MODEL"] = ""
     sys.path.insert(0, str(HERE.parent))
-    if args.sealed:   # only frozen files run sealed; an edit after freezing is refused (eval/sealed/README.md)
+    if args.sealed:   # only frozen files run sealed; an edit after freezing is refused
         from eval.sealed.freeze import verify
         verify(args.cases, args.seed_extension)
     elif args.seed_extension:
