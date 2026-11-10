@@ -5,25 +5,25 @@ description = "Department-aware AI operating layer for companies"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 dependencies = [
-    "fastapi==0.142.4",
+    "fastapi==0.162.1",
     "starlette==1.10.0",
-    "uvicorn[standard]==0.34.2",
-    "sqlalchemy==2.0.41",
-    "psycopg[binary]==3.2.9",
-    "alembic==1.16.1",
-    "pydantic==2.11.5",
-    "pydantic-settings==2.9.1",
+    "uvicorn[standard]==0.54.0",
+    "sqlalchemy==2.1.8",
+    "psycopg[binary]==3.3.8",
+    "alembic==1.20.1",
+    "pydantic==2.14.3",
+    "pydantic-settings==2.16.2",
     "argon2-cffi==25.1.0",
     "httpx==0.28.1",
-    "python-multipart==0.0.32",
-    "anthropic==1.15.0",
+    "python-multipart==0.0.33",
+    "anthropic==1.17.0",
     "email-validator==2.3.0",
     "reportlab==5.1.0",
     "python-docx==1.2.0",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest==9.1.1", "ruff==0.17.3"]
+dev = ["pytest==9.2.0", "ruff==0.17.4"]
 
 [build-system]
 requires = ["setuptools>=75"]
