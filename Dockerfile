@@ -1,5 +1,5 @@
 # --- frontend build ---------------------------------------------------------------
-FROM node:22.23.4-alpine AS web
+FROM node:22.23.5-alpine AS web
 WORKDIR /web
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci --no-audit --no-fund
